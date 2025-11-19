@@ -50,20 +50,14 @@
 
           <hr>
           <div class="mb-3">
-            <label class="form-label">Latitud</label>
-            <input type="text" name="latitud" id="latitud" readonly class="form-control" value="{{ old('latitud') }}">
+            <input type="hidden" name="latitud" id="latitud" readonly class="form-control" value="{{ old('latitud') }}">
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Longitud</label>
-            <input type="text" name="longitud" id="longitud" readonly class="form-control" value="{{ old('longitud') }}">
+            <input type="hidden" name="longitud" id="longitud" readonly class="form-control" value="{{ old('longitud') }}">
           </div>
 
-          <div class="text-end">
-            <button class="btn btn-primary">
-              <i class="ti ti-send"></i> Guardar Reporte
-            </button>
-          </div>
+          
 
         </div>
       </div>
@@ -82,6 +76,12 @@
       </div>
     </div>
   </div>
+
+  <div class="text-end">
+            <button class="btn btn-primary">
+              <i class="ti ti-send"></i> Guardar Reporte
+            </button>
+          </div>
 </form>
 @endsection
 

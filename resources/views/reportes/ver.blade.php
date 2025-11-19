@@ -12,7 +12,17 @@
   </style>
 @endpush
 
+
+
 @section('content')
+{{-- Si se actualiza --}}
+@if (session('success'))
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="ti ti-checks me-1"></i> {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+  </div>
+@endif
+
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h1 class="h4 mb-0">{{ $reporte->titulo }}
       <x-badge.estado :id="$reporte->estado_id" class="ms-2"/>
