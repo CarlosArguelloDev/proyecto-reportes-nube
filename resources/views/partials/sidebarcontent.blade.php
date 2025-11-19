@@ -11,19 +11,19 @@
             <i class="ti ti-dashboard"></i>
         </li>
         <li class="pc-item">
-            <a href="/proyecto/default/public/reportes" class="pc-link">
+            <a href="{{ route('reportes.index') }}" class="pc-link">
                 <span class="pc-micon"><i class="ti ti-report"></i></span>
                 <span class="pc-mtext">Reportes</span>
             </a>
         </li>
         <li class="pc-item">
-            <a href="" class="pc-link">
+            <a href="{{ route('zonas.index') }}" class="pc-link">
                 <span class="pc-micon"><i class="ti ti-map-2"></i></span>
                 <span class="pc-mtext">Zonas</span>
             </a>
         </li>
         <li class="pc-item">
-            <a href="/proyecto/default/public/reportes/atendidos" class="pc-link">
+            <a href="{{ route('reportes.atendidos') }}" class="pc-link">
                 <span class="pc-micon"><i class="ti ti-circle-check"></i></span>
                 <span class="pc-mtext">Reportes Atendidos</span>
             </a>
