@@ -13,7 +13,7 @@
   <meta name="author" content="CodedThemes">
 
   <!-- [Favicon] icon -->
-  <link rel="icon" href="{{ asset('plantilla/assets/images/favicon.svg') }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('storage/icon.png') }}" type="image/x-icon">
   <!-- [Google Font] Family -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
 <link rel="stylesheet" href="{{ asset('plantilla/src/assets/fonts/tabler-icons.min.css') }}">
@@ -53,13 +53,7 @@
   <div class="pc-container">
     <div class="pc-content">
       <!-- [ breadcrumb ] start -->
-      <div class="page-header">
-        <div class="page-block">
-          <div class="row align-items-center">
-         
-          </div>
-        </div>
-      </div>
+      
       <!-- [ breadcrumb ] end -->
       <!-- [ Main Content ] start -->
       <div class="row">

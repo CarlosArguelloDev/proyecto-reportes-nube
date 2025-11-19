@@ -34,21 +34,10 @@
           <h5 class="card-title">
             {{ $r->titulo }}
 
-            @if (!empty($r->diametro))
-              <span class="badge bg-light-warning">
-                <i class="ti ti-ruler-2"></i> Diámetro: {{ $r->diametro }}cm
-              </span>
-            @endif
+    
 
-            <span class="badge bg-info">
-              <i class="ti ti-clock"></i>
-              Estado: {{ $r->estado->nombre ?? 'N/A' }}
-            </span>
-
-            <span class="badge bg-danger">
-              <i class="ti ti-arrow-up-right"></i>
-              Prioridad: {{ $r->prioridad->nombre ?? 'N/A' }}
-            </span>
+            <x-badge.estado :id="$r->estado_id" class="ms-2"/>
+            <x-badge.prioridad :id="$r->prioridad_id" class="ms-2"/>
           </h5>
 
           @if (!empty($r->descripcion))
@@ -66,11 +55,13 @@
           </p>
 
           {{-- Botón para abrir comentarios --}}
+          <x-bform.bbutton text="Ver más" :href="route('reportes.show',$r)" color="primary" icon="ti ti-eye" outline size="sm" />
           <a class="card-link" data-bs-toggle="collapse" href="#{{ $collapseId }}" role="button"
              aria-expanded="{{ $shouldOpen ? 'true' : 'false' }}" aria-controls="{{ $collapseId }}">
-            Comentarios ({{ $r->comentarios->count() }})
+             Comentarios ({{ $r->comentarios->count() }})
           </a>
-          <a href="{{ route('reportes.show', $r->id) }}" class="card-link">Ver más</a>
+          
+        
         </div>
       </div>
     </div>
