@@ -12,7 +12,7 @@ class ReporteController extends Controller
 {
     public function index()
     {
-        $reportes = Reporte::with(['usuario','prioridad','estado'])
+        $reportes = Reporte::with(['usuario','prioridad','estado','comentarios.usuario'])
             ->orderBy('id','desc')
             ->paginate(10);
 
