@@ -12,7 +12,7 @@ class ReporteController extends Controller
 {
     public function index()
     {
-        $reportes = Reporte::with(['usuario','prioridad','estado'])
+        $reportes = Reporte::with(['usuario','prioridad','estado','comentarios.usuario'])
             ->orderBy('id','desc')
             ->paginate(10);
 
@@ -21,32 +21,36 @@ class ReporteController extends Controller
 
     public function create()
     {
-        // Datos para selects
-        $usuarios = Usuario::all();
-        $prioridades = Prioridad::all();
-        $estados = Estado::all();
 
-        return view('reportes.create', compact('usuarios','prioridades','estados'));
+        return view('reportes.create');
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'usuario_id' => 'required|exists:usuarios,id',
-            'titulo' => 'required|max:191',
-            'descripcion' => 'nullable|string',
-            'direccion' => 'nullable|max:255',
-            'latitud' => 'nullable|numeric',
-            'longitud' => 'nullable|numeric',
-            'prioridad_id' => 'required|exists:prioridades,id',
-            'estado_id' => 'required|exists:estados,id',
-        ]);
+   public function store(Request $request)
+{
+    $data = $request->validate([
+        'titulo' => ['required', 'string', 'max:191'],
+        'descripcion' => ['nullable', 'string'],
+        'direccion' => ['required', 'string', 'max:255'],
+        'latitud' => ['required', 'numeric'],
+        'longitud' => ['required', 'numeric'],
+        'foto' => ['required', 'image', 'max:10240'], 
+    ]);
 
-        Reporte::create($request->all());
+    
+    $data['estado_id'] = 1; 
+    $data['prioridad_id'] = 1; 
+    $data['usuario_id'] = 1; 
 
-        return redirect()->route('reportes.index')
-            ->with('success', 'Reporte creado exitosamente');
+    $reporte = \App\Models\Reporte::create($data);
+
+    // Guardar la imagen
+    if ($request->hasFile('foto')) {
+        $filename = $reporte->id . '.' . $request->foto->extension();
+        $request->foto->storeAs('reportes', $filename);
     }
+
+    return redirect()->route('reportes.index')->with('success', 'Reporte creado correctamente');
+}
 
     public function edit(Reporte $reporte)
     {
@@ -83,4 +87,31 @@ class ReporteController extends Controller
         return redirect()->route('reportes.index')
             ->with('success', 'Reporte eliminado');
     }
+
+    // app/Http/Controllers/ReporteController.php
+
+    public function show(\App\Models\Reporte $reporte)
+    {
+        $reporte->load([
+            'usuario','prioridad','estado',
+            'comentarios.usuario', 
+            'fotos' 
+        ]);
+
+        return view('reportes.ver', compact('reporte'));
+    }
+
+    public function atendidos()
+    {
+    $estadoResuelto = 3;
+
+    $reportes = \App\Models\Reporte::with(['usuario','estado','prioridad'])
+        ->where('estado_id', $estadoResuelto)
+        ->orderByDesc('created_at')
+        ->paginate(10);
+
+    return view('reportes.atendidos', compact('reportes'));
+    }
+
+
 }
