@@ -13,13 +13,14 @@
   <meta name="author" content="CodedThemes">
 
   <!-- [Favicon] icon -->
-  <link rel="icon" href="{{ asset('plantilla/assets/images/favicon.svg') }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('storage/icon.png') }}" type="image/x-icon">
   <!-- [Google Font] Family -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
 <link rel="stylesheet" href="{{ asset('plantilla/src/assets/fonts/tabler-icons.min.css') }}">
 <link rel="stylesheet" href="{{ asset('plantilla/src/assets/fonts/feather.css') }}">
 <link rel="stylesheet" href="{{ asset('plantilla/src/assets/fonts/fontawesome.css') }}">
 <link rel="stylesheet" href="{{ asset('plantilla/src/assets/fonts/material.css') }}">
+<link rel="stylesheet" href="plantilla/dist/assets/css/plugins/dataTables.bootstrap5.min.css">
 <!-- [Template CSS Files] -->
 <link rel="stylesheet" href="{{ asset('plantilla/dist/assets/css/style.css') }}" id="main-style-link">
 <link rel="stylesheet" href="{{ asset('plantilla/dist/assets/css/style-preset.css') }}">
@@ -53,13 +54,7 @@
   <div class="pc-container">
     <div class="pc-content">
       <!-- [ breadcrumb ] start -->
-      <div class="page-header">
-        <div class="page-block">
-          <div class="row align-items-center">
-         
-          </div>
-        </div>
-      </div>
+      
       <!-- [ breadcrumb ] end -->
       <!-- [ Main Content ] start -->
       <div class="row">
@@ -92,8 +87,6 @@
 <script src="{{ asset('plantilla/dist/assets/js/pcoded.js') }}"></script>
 <script src="{{ asset('plantilla/dist/assets/js/plugins/feather.min.js') }}"></script>
 
-  
-  
   
   
   <script>layout_change('light');</script>
