@@ -13,7 +13,7 @@
         <li class="pc-item">
             <a href="" class="pc-link">
                 <span class="pc-micon"><i class="ti ti-braces"></i></span>
-                <span class="pc-mtext">Proyecto Nube</span>
+                <span class="pc-mtext">Proyecto Nube Swarm - jenkins</span>
             </a>
         </li>
         <li class="pc-item pc-caption">
