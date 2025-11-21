@@ -13,7 +13,7 @@
         <li class="pc-item">
             <a href="" class="pc-link">
                 <span class="pc-micon"><i class="ti ti-braces"></i></span>
-                <span class="pc-mtext">21590276<br>Carlos Alberto Chávez Argüello</span>
+                <span class="pc-mtext">Proyecto Nube</span>
             </a>
         </li>
         <li class="pc-item pc-caption">
