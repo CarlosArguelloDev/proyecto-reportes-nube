@@ -17,6 +17,16 @@
             </a>
         </li>
         <li class="pc-item pc-caption">
+            <label>Mis informes</label>
+            <i class="ti ti-dashboard"></i>
+        </li>
+        <li class="pc-item">
+            <a href="{{ route('reportes.mis') }}" class="pc-link">
+                <span class="pc-micon"><i class="ti ti-report-analytics"></i></span>
+                <span class="pc-mtext">Mis Reportes</span>
+            </a>
+        </li>
+        <li class="pc-item pc-caption">
             <label>Secciones</label>
             <i class="ti ti-dashboard"></i>
         </li>

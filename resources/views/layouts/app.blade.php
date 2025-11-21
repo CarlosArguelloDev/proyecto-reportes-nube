@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="{{ asset('plantilla/src/assets/fonts/feather.css') }}">
 <link rel="stylesheet" href="{{ asset('plantilla/src/assets/fonts/fontawesome.css') }}">
 <link rel="stylesheet" href="{{ asset('plantilla/src/assets/fonts/material.css') }}">
+<link rel="stylesheet" href="plantilla/dist/assets/css/plugins/dataTables.bootstrap5.min.css">
 <!-- [Template CSS Files] -->
 <link rel="stylesheet" href="{{ asset('plantilla/dist/assets/css/style.css') }}" id="main-style-link">
 <link rel="stylesheet" href="{{ asset('plantilla/dist/assets/css/style-preset.css') }}">
@@ -86,8 +87,6 @@
 <script src="{{ asset('plantilla/dist/assets/js/pcoded.js') }}"></script>
 <script src="{{ asset('plantilla/dist/assets/js/plugins/feather.min.js') }}"></script>
 
-  
-  
   
   
   <script>layout_change('light');</script>

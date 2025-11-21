@@ -1,7 +1,7 @@
 <?php
 
 return [
-    // Clases base de Bootstrap para botones
+    // Clases de botones de botstrap
     'button_base' => 'btn d-inline-flex align-items-center gap-1',
     'button_colors' => [
         'primary'   => 'btn-primary',

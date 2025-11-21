@@ -49,7 +49,7 @@ class ReporteController extends Controller
         $request->foto->storeAs('reportes', $filename);
     }
 
-    return redirect()->route('reportes.index')->with('success', 'Reporte creado correctamente');
+    return redirect()->route('reportes.mis')->with('success', 'Reporte creado correctamente');
 }
 
     public function edit(Reporte $reporte)
@@ -61,30 +61,32 @@ class ReporteController extends Controller
         return view('reportes.edit', compact('reporte','usuarios','prioridades','estados'));
     }
 
-    public function update(Request $request, Reporte $reporte)
+    public function update(Request $request, \App\Models\Reporte $reporte)
     {
-        $request->validate([
-            'usuario_id' => 'required|exists:usuarios,id',
-            'titulo' => 'required|max:191',
-            'descripcion' => 'nullable|string',
-            'direccion' => 'nullable|max:255',
-            'latitud' => 'nullable|numeric',
-            'longitud' => 'nullable|numeric',
-            'prioridad_id' => 'required|exists:prioridades,id',
-            'estado_id' => 'required|exists:estados,id',
-        ]);
+    $data = $request->validate([
+        'titulo' => ['required','string','max:191'],
+        'descripcion' => ['nullable','string'],
+        'direccion' => ['nullable','string','max:255'],
+        'latitud' => ['required','numeric'],
+        'longitud' => ['required','numeric'],
+        'foto' => ['nullable','image','max:4096'],
+    ]);
 
-        $reporte->update($request->all());
+    $reporte->update($data);
 
-        return redirect()->route('reportes.index')
-            ->with('success', 'Reporte actualizado');
+    if ($request->hasFile('foto')) {
+        $filename = $reporte->id.'.'.$request->foto->extension();
+        $request->foto->storeAs('public/reportes', $filename);
+    }
+
+    return redirect()->route('reportes.mis', $reporte)->with('success','Reporte actualizado');
     }
 
     public function destroy(Reporte $reporte)
     {
         $reporte->delete();
 
-        return redirect()->route('reportes.index')
+        return redirect()->route('reportes.mis')
             ->with('success', 'Reporte eliminado');
     }
 
@@ -112,6 +114,20 @@ class ReporteController extends Controller
 
     return view('reportes.atendidos', compact('reportes'));
     }
+
+    public function misReportes()
+    {
+    // Autenticar
+    $usuarioId = 1;
+
+    $reportes = \App\Models\Reporte::with(['estado','prioridad'])
+        ->where('usuario_id', $usuarioId)
+        ->orderByDesc('created_at')
+        ->paginate(10);
+
+    return view('reportes.mis', compact('reportes'));   
+    }
+
 
 
 }

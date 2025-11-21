@@ -19,7 +19,7 @@
           <img src="{{ asset('storage/reportes/'.$r->id.'.jpg') }}"
                class="img-fluid"
                alt="reporte"
-               onerror="this.src='{{ asset('images/no-image.jpg') }}'">
+               width="256">
         </div>
         <div class="col-md-8">
           <div class="card-body">

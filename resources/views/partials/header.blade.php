@@ -20,18 +20,7 @@
         href="#"
         role="button"
         aria-haspopup="false"
-        aria-expanded="false"
-      >
-        <i class="ti ti-search"></i>
-      </a>
-      <div class="dropdown-menu pc-h-dropdown drp-search">
-        <form class="px-3">
-          <div class="form-group mb-0 d-flex align-items-center">
-            <i data-feather="search"></i>
-            <input type="search" class="form-control border-0 shadow-none" placeholder="Search here. . .">
-          </div>
-        </form>
-      </div>
+        aria-expanded="false">
     </li>
    
   </ul>
